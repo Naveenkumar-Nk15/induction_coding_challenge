@@ -1,0 +1,189 @@
+1. Write a program to print the following
+	Input: a2b6c3
+	Output: aabbbbbbccc
+
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String s = in.next();
+        char c[] = s.toCharArray();
+        if(c.length%2 != 0)
+        {
+		System.out.print("Invalid");
+            return ;
+        }
+        for(int i=0;i<c.length-1;i=i+2)
+        {
+            int j=0;
+            int k=c[i+1]-'0';
+            while(j<k)
+            {
+                System.out.print(c[i]);
+                j++;
+            }
+        }
+	}
+}
+
+
+2. Write a program to print the inverse of the previous program
+	Input: aabbbbbbccc
+	Output: a2b6c3
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String s = in.next();
+        StringBuffer sb = new StringBuffer();
+        char c[] = s.toCharArray();
+        int j=0;
+        for(int i=0;i<c.length;)
+        {
+            j=0;
+            while(i+j+1<c.length && c[i]==c[i+j+1])
+            {
+                j++;
+            }
+            // System.out.println(c[i]+" "+j+" "+i);
+            sb.append(c[i]);
+            sb.append(j+1);
+            if(j==0)
+            {
+                i++;
+            }
+            else
+            {
+                i=i+j+1;
+            }
+        }
+        System.out.println(sb);
+	}
+}
+
+
+
+3. Write a program to sort the given sentence in alphabetical order
+	Input: welcome to sirius india team
+	output: india sirius team to welcome
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String s = in.nextLine();
+        String c[] = s.split(" ");
+        for(int i=0;i<c.length;i++)
+        {
+            for(int j=i+1;j<c.length;j++)
+            {
+                int k=0;
+                while(c[i].charAt(k)==c[j].charAt(k))
+                {
+                    k++;
+                }
+                if(c[i].charAt(k)>c[j].charAt(k))
+                {
+                    String t = c[i];
+                    c[i] = c[j];
+                    c[j] = t;
+                }
+            }
+        }
+        for(int i=0;i<c.length;i++)
+        {
+            System.out.print(c[i]+" ");
+        }
+	}
+}
+
+
+4. Program to find the length of the longest word in the given input
+	Input: welcome to sirius india team
+	Output: welcome  7
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String s = in.nextLine();
+        String c[] = s.split(" ");
+        int max=-9999;
+        int ind=0;
+        for(int i=0;i<c.length;i++)
+        {
+            if(c[i].length()>max)
+            {
+                ind = i;
+                max = c[i].length();
+            }
+        }
+       System.out.println(c[ind]+" "+max);
+	}
+}
+
+5. Program to print the following pattern, Input will be number of rows
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n;
+        n = in.nextInt();
+        if(n<1)
+        {
+            System.out.println("Invalid");
+            return ; 
+        }
+        for (int i = 0; i < n; i++) 
+        {
+            for (int j = 0; j< n-i-1; j++)
+                System.out.print(" ");
+             
+            int ntp=1;
+            for (int j=0;j<=i;j++) 
+            {
+                if(j!=0)
+                {
+                    ntp = ntp * (i - j + 1) / j;
+                }
+                System.out.print(ntp+" ");
+            }
+            System.out.println();
+       }
+	}
+}
+
+
+6. Find the number trailing zero's of the factorial of a number.
+	Input: 5! = 120 Output: 1
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n;
+        n = in.nextInt();
+        long p=1;
+        for(int i=1;i<=n;i++)
+        {
+            p=p*i;
+        }
+        int c=0;
+        while(p%10==0)
+        {
+            p=p/10;
+            c++;
+        }
+        System.out.println(c);
+	}
+}
+
